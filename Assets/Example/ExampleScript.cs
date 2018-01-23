@@ -38,10 +38,23 @@ public class ExampleScript : MonoBehaviour
         var button1model = new ModalButtonModel { Icon = button1Icon };
         var button2Model = new ModalButtonModel{ Text = "Log message", Action = Log };
         var button3Model = new ModalButtonModel{ Text = "Log custon message", Icon = button2Icon, Action = () => LogCustonMessage("Custom message") };
-        var modalDetail = new ModalPanelModel("Had of her little ungodly who friend", button1model)
+        var modalDetail = new ModalPanelModel("Had of her little ungodly who friend")
         {
+            Button1Model = button1model,
             Button2Model = button2Model,
             Button3Model = button3Model,
+            IconImage = modalIcon
+        };
+
+        ModalPanel.Instance().Show(modalDetail);
+    }
+
+    public void OnClickShowOneButton()
+    {
+        var button1model = new ModalButtonModel { Icon = button1Icon };
+        var modalDetail = new ModalPanelModel("Had of her little ungodly who friend")
+        {
+            Button1Model = button1model,
             IconImage = modalIcon
         };
 

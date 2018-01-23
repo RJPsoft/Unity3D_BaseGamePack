@@ -2,16 +2,14 @@
 
 public class ModalPanelModel
 {
-    readonly ModalButtonModel button1Model;
     readonly string modalText;
 
-    public ModalPanelModel(string modalText, ModalButtonModel button1Model)
+    public ModalPanelModel(string modalText)
     {
         this.modalText = modalText;
-        this.button1Model = button1Model;
     }
 
-    public ModalButtonModel Button1Model { get { return button1Model; } }
+    public ModalButtonModel Button1Model { get; set; }
 
     public ModalButtonModel Button2Model { get; set; }
 
