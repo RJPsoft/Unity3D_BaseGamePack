@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class ExampleScript : MonoBehaviour
+public class ModalExampleScript : MonoBehaviour
 {
-    static ExampleScript exampleScript;
+    static ModalExampleScript exampleScript;
 
     [SerializeField]
     Sprite modalIcon;
@@ -11,11 +11,11 @@ public class ExampleScript : MonoBehaviour
     [SerializeField]
     Sprite button2Icon;
 
-    public static ExampleScript Instance()
+    public static ModalExampleScript Instance()
     {
         if (!exampleScript)
         {
-            var exampleScripts = FindObjectsOfType<ExampleScript>();
+            var exampleScripts = FindObjectsOfType<ModalExampleScript>();
             if (exampleScripts.Length == 0)
             {
                 Debug.LogError("There needs to be one active ExampleScript script on a GameObject in your scene.");
