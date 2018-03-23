@@ -9,13 +9,21 @@ public class ModalPanelModel
         this.modalText = modalText;
     }
 
-    public ModalButtonModel Button1Model { get; set; }
+    public ModalButtonModel PositiveButtonModel { get; set; }
 
-    public ModalButtonModel Button2Model { get; set; }
+    public ModalButtonModel NeutralButtonModel { get; set; }
 
-    public ModalButtonModel Button3Model { get; set; }
+    public ModalButtonModel NegativeButtonModel { get; set; }
 
     public Sprite IconImage { get; set; }
 
-    public string ModalText { get { return modalText; } }
+    public Color IconColor { get; set; }
+
+    public string ModalText
+    {
+        get
+        {
+            return modalText;
+        }
+    }
 }

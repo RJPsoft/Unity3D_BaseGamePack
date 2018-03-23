@@ -14,7 +14,7 @@ public class ModalPanel : MonoBehaviour
     /// <value>
     /// <c>true</c> if the modal is showing; otherwise, <c>false</c>.
     /// </value>
-    public bool IsShowing { get { return modalPanelObject.activeSelf; } }
+    public bool IsShowing { get { return  modalPanelObject.activeSelf; } }
 
     #endregion Public Properties
 
@@ -22,28 +22,28 @@ public class ModalPanel : MonoBehaviour
 
     static ModalPanel modalPanel;
 
-    UnityAction[] _button1Actions = new UnityAction[2];
-    UnityAction[] _button2Actions = new UnityAction[2];
-    UnityAction[] _button3Actions = new UnityAction[2];
+    UnityAction[] _positiveButtonActions = new UnityAction[2];
+    UnityAction[] _neutralButtonActions = new UnityAction[2];
+    UnityAction[] _negativeButtonActions = new UnityAction[2];
 
     [SerializeField]
-    Button button1;
+    Button positiveButton;
     [SerializeField]
-    Image button1Icon;
+    Image positiveButtinIcon;
     [SerializeField]
-    Text button1Text;
+    Text positiveButtonText;
     [SerializeField]
-    Button button2;
+    Button neutralButton;
     [SerializeField]
-    Image button2Icon;
+    Image neutralButtonIcon;
     [SerializeField]
-    Text button2Text;
+    Text neutralButtonText;
     [SerializeField]
-    Button button3;
+    Button negativeButton;
     [SerializeField]
-    Image button3Icon;
+    Image negativeButtonIcon;
     [SerializeField]
-    Text button3Text;
+    Text negativeButtonText;
     [SerializeField]
     Image iconImage;
     [SerializeField]
@@ -66,11 +66,11 @@ public class ModalPanel : MonoBehaviour
             var modalPanels = FindObjectsOfType<ModalPanel>();
             if (modalPanels.Length == 0)
             {
-                Debug.LogError("There needs to be one active ModalPanel script on a GameObject in your scene.");
+                throw new InvalidOperationException("There needs to be one active ModalPanel script on a GameObject in your scene.");
             }
             else if (modalPanels.Length > 1)
             {
-                Debug.LogError("There needs to be only one active ModalPanel script on a GameObject in your scene.");
+                throw new InvalidOperationException("There needs to be only one active ModalPanel script on a GameObject in your scene.");
             }
             else
             {
@@ -79,6 +79,30 @@ public class ModalPanel : MonoBehaviour
         }
 
         return modalPanel;
+    }
+
+    void Update()
+    {
+        InputController.HitEscapeAndIsActive(modalPanelObject, this, ExecuteCloseAction);
+    }
+
+    void ExecuteCloseAction()
+    {
+        if (neutralButton.IsActive())
+        {
+            _neutralButtonActions[0].Invoke();
+            StartCoroutine(ExecuteAction(_neutralButtonActions[1]));
+        }
+        else if (negativeButton.IsActive())
+        {
+            _negativeButtonActions[0].Invoke();
+            StartCoroutine(ExecuteAction(_negativeButtonActions[1]));
+        }
+        else
+        {
+            _positiveButtonActions[0].Invoke();
+            StartCoroutine(ExecuteAction(_positiveButtonActions[1]));
+        }
     }
 
     /// <summary>
@@ -94,14 +118,14 @@ public class ModalPanel : MonoBehaviour
         modalText.text = details.ModalText;
         ConfigureIcon(details);
 
-        if (details.Button1Model == null && details.Button2Model == null && details.Button3Model == null)
+        if (details.PositiveButtonModel == null && details.NeutralButtonModel == null && details.NegativeButtonModel == null)
         {
             throw new InvalidOperationException("At least one ButtonModel is necessary");
         }
 
-        ConfigureButton(button1, button1Text, button1Icon, details.Button1Model, Button1Listener, _button1Actions);
-        ConfigureButton(button2, button2Text, button2Icon, details.Button2Model, Button2Listener, _button2Actions);
-        ConfigureButton(button3, button3Text, button3Icon, details.Button3Model, Button3Listener, _button3Actions);
+        ConfigureButton(positiveButton, positiveButtonText, positiveButtinIcon, details.PositiveButtonModel, Button1Listener, _positiveButtonActions);
+        ConfigureButton(neutralButton, neutralButtonText, neutralButtonIcon, details.NeutralButtonModel, Button2Listener, _neutralButtonActions);
+        ConfigureButton(negativeButton, negativeButtonText, negativeButtonIcon, details.NegativeButtonModel, Button3Listener, _negativeButtonActions);
     }
 
     #endregion Public Methods
@@ -123,20 +147,20 @@ public class ModalPanel : MonoBehaviour
 
     void Button1Listener()
     {
-        _button1Actions[0].Invoke();
-        StartCoroutine(ExecuteAction(_button1Actions[1]));
+        _positiveButtonActions[0].Invoke();
+        StartCoroutine(ExecuteAction(_positiveButtonActions[1]));
     }
 
     void Button2Listener()
     {
-        _button2Actions[0].Invoke();
-        StartCoroutine(ExecuteAction(_button2Actions[1]));
+        _neutralButtonActions[0].Invoke();
+        StartCoroutine(ExecuteAction(_neutralButtonActions[1]));
     }
 
     void Button3Listener()
     {
-        _button3Actions[0].Invoke();
-        StartCoroutine(ExecuteAction(_button3Actions[1]));
+        _negativeButtonActions[0].Invoke();
+        StartCoroutine(ExecuteAction(_negativeButtonActions[1]));
     }
 
     void ClosePanel()
@@ -169,12 +193,14 @@ public class ModalPanel : MonoBehaviour
     void DeactivateElements()
     {
         iconImage.gameObject.SetActive(false);
-        button1.gameObject.SetActive(false);
-        button2.gameObject.SetActive(false);
-        button3.gameObject.SetActive(false);
+        positiveButton.gameObject.SetActive(false);
+        neutralButton.gameObject.SetActive(false);
+        negativeButton.gameObject.SetActive(false);
     }
 
+#pragma warning disable CC0091 // Use static method
     IEnumerator ExecuteAction(UnityAction unityAction)
+#pragma warning restore CC0091 // Use static method
     {
         yield return null;
         unityAction.Invoke();
@@ -187,12 +213,12 @@ public class ModalPanel : MonoBehaviour
 
     void RemoveAllListeners()
     {
-        button1.onClick.RemoveAllListeners();
-        button2.onClick.RemoveAllListeners();
-        button3.onClick.RemoveAllListeners();
+        positiveButton.onClick.RemoveAllListeners();
+        neutralButton.onClick.RemoveAllListeners();
+        negativeButton.onClick.RemoveAllListeners();
     }
 
-    void SetButtonIcon(Image buttonIcon, ModalButtonModel buttonDetails)
+    static void SetButtonIcon(Image buttonIcon, ModalButtonModel buttonDetails)
     {
         if (buttonDetails.Icon != null)
         {
