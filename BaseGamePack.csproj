@@ -239,6 +239,8 @@
     <Compile Include="Assets\Advertising\AdvertisingWrapper.cs" />
     <Compile Include="Assets\Advertising\AdvertisingWrapper.Vungle.cs" />
     <Compile Include="Assets\Advertising\VunglePlacementsIds.cs" />
+    <Compile Include="Assets\BringToFront.cs" />
+    <Compile Include="Assets\DeactivateOnStart.cs" />
     <Compile Include="Assets\DirectionRaycasting2D.cs" />
     <Compile Include="Assets\Example\Modal\ModalExampleScript.cs" />
     <Compile Include="Assets\ExtensionMethods\GameObjectExtensions.cs" />
@@ -289,8 +291,6 @@
     <Compile Include="Assets\Image\FullscreenSprite.cs" />
     <Compile Include="Assets\InputController\InputController.cs" />
     <Compile Include="Assets\LogManager\LogManager.cs" />
-    <Compile Include="Assets\ModalPanel\Scripts\BringToFront.cs" />
-    <Compile Include="Assets\ModalPanel\Scripts\DeactivateOnStart.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\ModalButtonModel.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\ModalPanel.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\ModalPanelModel.cs" />
