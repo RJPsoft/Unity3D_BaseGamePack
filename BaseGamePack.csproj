@@ -224,19 +224,92 @@
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/Users/jpedretti/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="VungleSDKProxy">
+      <HintPath>Assets/Plugins/VungleSDKProxy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="BaseGamePack.Plugins.csproj">
+      <Project>{6D6EDB22-EA50-0E2B-E96C-B17876AB2917}</Project>
+      <Name>BaseGamePack.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Advertising\AdvertisingWrapper.Admob.cs" />
+    <Compile Include="Assets\Advertising\AdvertisingWrapper.cs" />
+    <Compile Include="Assets\Advertising\AdvertisingWrapper.Vungle.cs" />
+    <Compile Include="Assets\Advertising\VunglePlacementsIds.cs" />
+    <Compile Include="Assets\DirectionRaycasting2D.cs" />
     <Compile Include="Assets\Example\Modal\ModalExampleScript.cs" />
     <Compile Include="Assets\ExtensionMethods\GameObjectExtensions.cs" />
     <Compile Include="Assets\ExtensionMethods\TransformExtensions.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdLoader.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdRequest.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdSize.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\BannerView.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\CustomNativeEventArgs.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\CustomNativeTemplateAd.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\Gender.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\InterstitialAd.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\Mediation\MediationExtras.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\MobileAds.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\NativeExpressAdView.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\Reward.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\RewardBasedVideoAd.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\DummyClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IAdLoaderClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IBannerClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\ICustomNativeTemplateClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IInterstitialClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IMobileAdsClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\INativeExpressAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IRewardBasedVideoAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\Utils.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AdLoaderClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\BannerClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\CustomNativeTemplateClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\InterstitialClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\MobileAdsClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\NativeExpressAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\RewardBasedVideoAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\Utils.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\GoogleMobileAdsClientFactory.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\AdLoaderClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\BannerClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\CustomNativeTemplateClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Externs.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\InterstitialClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MobileAdsClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\NativeExpressAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\RewardBasedVideoAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Utils.cs" />
+    <Compile Include="Assets\Image\FullscreenSprite.cs" />
     <Compile Include="Assets\InputController\InputController.cs" />
+    <Compile Include="Assets\LogManager\LogManager.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\BringToFront.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\DeactivateOnStart.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\ModalButtonModel.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\ModalPanel.cs" />
     <Compile Include="Assets\ModalPanel\Scripts\ModalPanelModel.cs" />
+    <Compile Include="Assets\PauseController\Scripts\IPausable.cs" />
+    <Compile Include="Assets\PauseController\Scripts\IQuittable.cs" />
+    <Compile Include="Assets\PauseController\Scripts\IResettable.cs" />
+    <Compile Include="Assets\PauseController\Scripts\PauseManager.cs" />
+    <Compile Include="Assets\PauseController\Scripts\TimePause.cs" />
     <Compile Include="Assets\SaveMechanism\Scripts\PlayerPrefKey.cs" />
     <Compile Include="Assets\SaveMechanism\Scripts\SaveManager.cs" />
+    <Compile Include="Assets\ScreenManager.cs" />
+    <Compile Include="Assets\Singletons\PersistentSingleton.cs" />
+    <Compile Include="Assets\Singletons\SceneSingleton.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
+    <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.61.0.txt" />
+    <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\Vungle_lib\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
